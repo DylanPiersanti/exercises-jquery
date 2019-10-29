@@ -24,4 +24,16 @@ $(function() {
     }, 10000)
   }) // start video and pause at 10s
 
+  $('.nav-tabs a').click(function() {
+    $(this).tab('show')
+  })
+
+  $('#showModal').click(function() {
+    $('#modal').show()
+  })
+
+  $('.close, #closeBtn').click(function() {
+    $('#modal').hide()
+  })
+
 });
