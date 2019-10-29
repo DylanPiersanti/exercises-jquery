@@ -5,4 +5,7 @@ $(function() {
 
   $('a').removeClass('disabled')
 
+  $('[name=search]').keyup(function() {
+    $('#searchResult').html($('[name=search]').val())
+  })
 });
