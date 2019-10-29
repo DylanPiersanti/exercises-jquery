@@ -17,4 +17,11 @@ $(function() {
     $(this).addClass('active').siblings().removeClass('active')
   }) // change active list
 
+  $('#playVideo').click(function() {
+    $('#video').trigger('play')
+    setTimeout(function() {
+      $('#video').get(0).pause()
+    }, 10000)
+  }) // start video and pause at 10s
+
 });
