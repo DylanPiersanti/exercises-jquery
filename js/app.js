@@ -34,6 +34,11 @@ $(function() {
 
   $('.close, #closeBtn').click(function() {
     $('#modal').hide()
-  })
+  }) // afficher la modal
+
+  $('#showPop').click(function() {
+    $('[data-content]').popover()
+  }) // afficher le popover
+
 
 });
