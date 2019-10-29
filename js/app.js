@@ -3,38 +3,51 @@ $(function () {
     $(".dropdown-menu").toggle()
   })  // menu dropDown
 
-  $('a').removeClass('disabled') // supprime class disabled
+  $('#navbarSupportedContent a').removeClass('disabled') // supprime class disabled
 
-  $('[name=search]').keyup(function () {
+  $('[name=search]').on("change keyup", function () {
     $('#searchResult').html($(this).val())
   }) // keyUp
 
   $('#replaceTitle').click(function () {
-    $('.display-4').text("Web Developer " + Math.floor(Math.random() * 51))
+    var randomNum = Math.floor(Math.random() * 51);
+    $('.display-4').text("Web Developer " + randomNum)
   }) // replaceTitle + Math.random()
 
   $('.list-group-item').click(function () {
-    $(this).addClass('active').siblings().removeClass('active')
+    $(this).addClass('active');
+    $(this).siblings().removeClass('active')
   }) // change active list
 
   $('#playVideo').click(function () {
-    $('#video').trigger('play')
+    var maVideo = $('#video').get(0);
+    maVideo.play()
     setTimeout(function () {
-      $('#video').get(0).pause()
+      maVideo.pause()
     }, 11000)
   }) // start video and pause at 10s
 
   $('.nav-tabs a').click(function () {
     $(this).tab('show')
-  })
+  }) // 
+
+  /* var tabs = $('[data-tabs]');
+      tabs.find('.nav-link').click(function() {
+        var name = $(this).getAttribute('href');
+        // name = "#profile"
+
+        + name.replace('#', '').show()
+      })
+  */
 
   $('#showModal').click(function () {
     $('#modal').show()
+    $('.close, #closeBtn').one('click', function () {
+      $('#modal').hide()
+    })
   })
 
-  $('.close, #closeBtn').click(function () {
-    $('#modal').hide()
-  }) // afficher la modal
+
 
   $('#showPop').click(function () {
     $('[data-content]').popover()
@@ -65,13 +78,17 @@ $(function () {
     }
   }, 1000)
 
-  setInterval(function () {
-    $('#spinner').css("animation-play-state", "paused")
-  }, 4000);
-  setInterval(function () {
-    $('#spinner').css("animation-play-state", "running")
-  }, 9000)
+  var isPlayed = true;
 
+  setInterval(function () {
+    if (isPlayed) {
+      $('#spinner').css("animation-play-state", "paused")
+      isPlayed = false;
+    } else {
+      $('#spinner').css("animation-play-state", "running")
+      isPlayed = true;
+    }
+  }, 5000);
 
 
 });
